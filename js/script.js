@@ -73,17 +73,16 @@ sortVal.addEventListener('click', function(e) {
             return ((x[property] === y[property]) ? 0 : ((x[property] > y[property]) ? 1 : -1));
         }
     }
-    movieslist.sort(sortByProperty('movielikes'))
-    moviediv.remove();
-    moviediv2 = document.createElement('div')
-    moviediv2.setAttribute('id', 'movies')
-    main.appendChild(moviediv2)
 
+    if(click == "sort"){
+    movieslist.sort(sortByProperty('movielikes'))
+    moviediv.innerHTML = ""
     for (i = 5; i != -1; i--) {
         box = document.createElement('div');
         box.setAttribute('class', 'moviebox');
         box.innerHTML = `<img src="${movieslist[i].movieimg}" alt = "fuck"><span class="mname">${movieslist[i].moviename}<br></span><span class="mdesc">${movieslist[i].moviedesc}</span><br><input type="button" id="but${movieslist[i].id}" value="Like &#128077;"><span id="like${movieslist[i].id}">${movieslist[i].movielikes}</span>`
-        moviediv2.appendChild(box)
+        moviediv.appendChild(box)
 
     }
+}
 })
